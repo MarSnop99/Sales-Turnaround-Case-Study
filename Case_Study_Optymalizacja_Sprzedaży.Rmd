@@ -1,0 +1,78 @@
+---
+title: 'Case Study: Optymalizacja Sprzedaży'
+author: "Marcin Snopek"
+date: "2025-12-31"
+output: 
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+---
+
+------------------------------------------------------------------------
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(ggplot2)
+library(dplyr)
+library(scales)
+library(knitr)
+```
+
+## 1. Podsumowanie Menedżerskie
+
+Celem projektu była optymalizacja wyników sprzedażowych poprzez działania operacyjne i analityczne. Wdrożone zmiany przełożyły się na **16.5% wzrostu sprzedaży** r/r oraz poprawę rotacji zapasów.
+
+------------------------------------------------------------------------
+
+## 2. Metodologia
+
+1.  **Analiza Dostępności:** Eliminacja braków towarowych (Out-of-Stock).
+2.  **Zarządzanie Rotacją:** Wyprzedaż towarów zalegających (Aging Stock).
+3.  **Focus na Bestsellery:** Strategiczne pozycjonowanie produktów kluczowych.
+
+------------------------------------------------------------------------
+
+## 3. Wyniki (Symulacja Danych)
+
+*Poniższa sekcja prezentuje wizualizację danych. Wartości zostały zasymulowane na potrzeby portfolio, zachowując rzeczywiste wskaźniki wzrostu osiągnięte w projekcie.*
+
+```{r data_gen}
+# Generowanie danych
+set.seed(42)
+months <- factor(month.abb, levels = month.abb)
+
+# Dane historyczne (Rok Bazowy)
+base <- c(40, 38, 42, 45, 48, 50, 49, 47, 46, 52, 60, 65) * 1000
+
+# Dane po optymalizacji (Wzrost 16.5%)
+target <- base * 1.165 + runif(12, -1500, 1500)
+
+df <- data.frame(
+  Miesiac = rep(months, 2),
+  Okres = rep(c("Rok Bazowy", "Rok Optymalizacji"), each = 12),
+  Sprzedaz = c(base, target)
+)
+```
+
+### 3.1. Wykres Wzrostu Sprzedaży
+
+```{r plot, fig.width=9, fig.height=5}
+ggplot(df, aes(x = Miesiac, y = Sprzedaz, fill = Okres)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_manual(values = c("#95a5a6", "#27ae60")) +
+  scale_y_continuous(labels = dollar_format(prefix="", suffix=" zł")) +
+  labs(title = "Wzrost Sprzedaży o +16.5%", y = "Przychód") +
+  theme_minimal() +
+  theme(legend.position = "top")
+```
+
+### 3.2. Kluczowe Wskaźniki (KPI)
+
+```{r kpi}
+kpi <- data.frame(
+  Wskaznik = c("Wzrost Obrotu", "Wzrost Wolumenu", "Rotacja Zapasów"),
+  Wynik = c("+16.5%", "+11.2%", "76.8 Dnia")
+)
+kable(kpi, align = "lc")
+```
