@@ -24,7 +24,7 @@ Zamiast szukać skomplikowanych rozwiązań, wdrożyłem zdyscyplinowane podejś
 
 **3. Praktyczne Wykorzystanie Danych:**
 *   Mając dostęp do raportów sprzedaży, regularnie analizowałem, które produkty rotują najlepiej. Na tej podstawie dbałem o stałą dostępność bestsellerów i ich strategiczne umiejscowienie w dziale.
-*   Kontynuowałem skuteczne zarządzanie towarami trudnozbywalnymi (opisane w moim pierwszym Case Study), co bezpośrednio przyczyniło się do osiągnięcia **doskonałego wyniku rotacji zapasów (76,8 dnia)**.
+*   Kontynuowałem skuteczne zarządzanie towarami trudnozbywalnymi, co bezpośrednio przyczyniło się do osiągnięcia **doskonałego wyniku rotacji zapasów (76,8 dnia)**.
 
 ### 3. Wyniki – Mierzalny Wpływ Mojej Pracy
 
